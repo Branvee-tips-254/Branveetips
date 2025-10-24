@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Room | Branvee Bets</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #001f3f, #003366);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      color: #FFD700;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      text-shadow: 0 0 10px #FFD700;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(0, 0, 0, 0.4);
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      color: #FFD700;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>🔥 Today's Random VIP Tips</header>
+  <div class="container">
+    <ul id="vipTips"></ul>
+    <a href="index.html">⬅️ Back to Home</a>
+  </div>
+  <footer>© 2025 Branvee Bets. All Rights Reserved.</footer>
+
+  <script>
+    const allTips = [
+      "Manchester United vs Chelsea — Over 2.5 Goals ✅",
+      "Barcelona vs Real Madrid — Both Teams to Score ⚽",
+      "Liverpool vs Arsenal — Draw HT/FT 🏆",
+      "Juventus vs AC Milan — Under 3.5 Goals 🔥",
+      "PSG vs Lyon — Home Win ✅",
+      "Ajax vs Feyenoord — Over 2.5 Goals ⚽",
+      "Bayern Munich vs Dortmund — Both Teams to Score ✅",
+      "Inter Milan vs Napoli — Home Win 🥇",
+      "Atletico Madrid vs Sevilla — Over 1.5 Goals ⚡",
+      "Leicester vs Leeds — Away Win 💪"
+    ];
+
+    // Shuffle and pick 3 random tips
+    const randomTips = allTips.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+    const list = document.getElementById("vipTips");
+    randomTips.forEach(tip => {
+      const li = document.createElement("li");
+      li.textContent = tip;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>

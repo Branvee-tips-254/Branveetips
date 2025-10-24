@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random VIP | Branvee Bets</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #001f3f, #001533);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #002b5b;
+      color: #ffd700;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 15px;
+      letter-spacing: 1px;
+    }
+
+    .vip-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .vip-container p {
+      font-size: 16px;
+      color: #ddd;
+      margin-bottom: 25px;
+    }
+
+    input[type="password"] {
+      width: 80%;
+      max-width: 320px;
+      padding: 12px;
+      border: 2px solid #ffd700;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    button {
+      width: 80%;
+      max-width: 320px;
+      padding: 14px;
+      background: linear-gradient(90deg, #ffb300, #ffcc00);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #001533;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #ffc107, #ffdf00);
+      transform: scale(1.03);
+    }
+
+    .contact-link {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ffd700;
+    }
+
+    .contact-link a {
+      color: #00bfff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-link a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #002b5b;
+      color: #ccc;
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🎯 RANDOM VIP TIPS</header>
+
+  <div class="vip-container">
+    <p>Enter your VIP password to view today’s random VIP tip.</p>
+    <input type="password" id="vipPassword" placeholder="Enter VIP Password">
+    <button onclick="checkPassword()">Access VIP Room</button>
+    <div class="contact-link">
+      <p>Don’t have the password?<br>
+      <a href="contact.html">Contact Admin for VIP Tips Password</a></p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Branvee Bets. All Rights Reserved. <br>
+    🏠 <a href="index.html">Home</a> | 📞 <a href="contact.html">Contact</a> | ℹ️ <a href="about.html">About</a>
+  </footer>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("vipPassword").value.trim();
+      const correctPassword = "branveeVIP"; // change this to your real VIP password
+
+      if (password === correctPassword) {
+        alert("✅ Access Granted! Welcome to Branvee Random VIP Tip Room.");
+        window.location.href = "viproom.html"; // go to your actual tip page
+      } else {
+        alert("❌ Wrong password! Please contact admin for the correct VIP access.");
+      }
+    }
+  </script>
+
+</body>
+</html>
