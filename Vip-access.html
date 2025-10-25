@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💎 Branvee VIP Room</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8faff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: white;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-weight: 600;
+      color: #007bff;
+      font-size: 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin: 25px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #002b7f;
+      margin-bottom: 15px;
+    }
+    p {
+      text-align: center;
+      line-height: 1.6;
+    }
+    .highlight {
+      font-weight: 600;
+      color: #007bff;
+    }
+    .contact-section {
+      margin-top: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      width: 100%;
+      outline: none;
+    }
+    textarea {
+      height: 100px;
+      resize: none;
+    }
+    .btn {
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    .telegram-link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #007bff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    footer {
+      background: #002b7f;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>💎 Branvee VIP Room</header>
+
+  <div class="container">
+    <h2>Welcome to VIP Access</h2>
+
+    <p>🎉 <strong>Thank you for heading to VIP!</strong></p>
+    <p>You are <span class="highlight">one step away</span> from changing your betting history.</p>
+    <p>To view <strong>exclusive VIP tips</strong>, please contact the admin to receive them directly on your <strong>WhatsApp</strong> or <strong>Telegram</strong>.</p>
+
+    <div class="contact-section">
+      <a href="#vipForm" class="btn">📩 Contact Admin for Today's VIP Tips</a>
+
+      <form id="vipForm" action="https://formsubmit.co/ajax/your@email.com" method="POST" onsubmit="sendToTelegram(event)">
+        <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+        <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+        <input type="text" id="phone" name="phone" placeholder="Your WhatsApp Number (include country code)" required>
+        <textarea id="message" name="message" placeholder="Your message or request..." required></textarea>
+        <button type="submit" class="btn">🚀 Send Message</button>
+      </form>
+
+      <a href="https://t.me/Branvoske" target="_blank" class="telegram-link">💬 Or message directly on Telegram</a>
+    </div>
+  </div>
+
+  <footer>
+    <a href="index.html">🏠 Home</a> |
+    <a href="vip.html">💎 VIP Room</a> |
+    <a href="contact.html">📞 Contact</a> |
+    <a href="about.html">ℹ️ About</a>
+    <p>© 2025 Branvee Tips. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function sendToTelegram(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+      
+      const text = 
+        `📩 *New VIP Request*\n\n` +
+        `👤 Name: ${name}\n📧 Email: ${email}\n📱 WhatsApp: ${phone}\n💬 Message: ${message}`;
+      
+      const url = `https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage?chat_id=@Branvoske&text=${encodeURIComponent(text)}&parse_mode=Markdown`;
+      
+      // Send message to your Telegram bot
+      fetch(url)
+        .then(response => {
+          alert("✅ Message sent successfully! Admin will contact you shortly.");
+          document.getElementById('vipForm').reset();
+        })
+        .catch(() => alert("❌ Failed to send. Try again later."));
+    }
+  </script>
+
+</body>
+</html>

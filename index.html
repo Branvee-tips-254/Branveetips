@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏠 Branvee Bets | Free Predictions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    /* GENERAL SETTINGS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f8faff;
+      color: #333;
+      overflow: hidden;
+    }
+
+    /* SPLASH SCREEN STYLES */
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, #002b7f, #007bff);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeOut 1s ease 3.5s forwards;
+    }
+
+    #splash h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      animation: fadeIn 2s ease;
+    }
+
+    #splash .ball {
+      font-size: 60px;
+      animation: kick 2s infinite ease-in-out;
+    }
+
+    #splash p {
+      margin-top: 15px;
+      font-style: italic;
+      font-size: 16px;
+      color: #fff;
+      opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeOut {
+      to {opacity: 0; visibility: hidden;}
+    }
+
+    @keyframes kick {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px) rotate(-15deg); }
+    }
+
+    /* MAIN PAGE (TIPS) */
+    #main {
+      display: none;
+      opacity: 0;
+      animation: showMain 1s ease forwards 4s;
+    }
+
+    @keyframes showMain {
+      to {opacity: 1;}
+    }
+
+    header {
+      background: white;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-weight: 600;
+      color: #e60000;
+      font-size: 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #002b7f;
+      margin-bottom: 20px;
+    }
+    .tip {
+      background: #f8faff;
+      border-left: 5px solid #007bff;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+    }
+    .tip strong {
+      color: #000;
+    }
+    .advice {
+      background: #f0f8ff;
+      border-left: 5px solid #1e90ff;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .join-btn {
+      display: block;
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .vip-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .vip-buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .gold-vip-btn {
+      background: linear-gradient(90deg, #ffb300, #ffd54f);
+      color: #1a1a1a;
+    }
+    .random-vip-btn {
+      background: linear-gradient(90deg, #2196f3, #21cbf3);
+    }
+    .vip-buttons a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    footer {
+      background: #002b7f;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    
+    /* NEW SPLASH SCREEN STYLES */
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000000, #ff4500);
+  color: white;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#splash h1 {
+  font-size: 3em;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+  animation: fadeIn 2s ease-in-out;
+}
+
+#splash p {
+  font-size: 1.3em;
+  color: #ffdab9;
+  margin-top: 15px;
+  font-style: italic;
+  animation: slideUp 2.5s ease-in-out;
+}
+
+.progress-bar {
+  width: 80%;
+  height: 8px;
+  margin-top: 40px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ffb300, #ff4500);
+  animation: fill 5s linear forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: scale(0.95); }
+}
+  </style>
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <!-- SPLASH SCREEN -->
+<div id="splash">
+  <h1>BRANVEE BETS</h1>
+  <p>“Where Passion Meets Prediction”</p>
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+</div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main">
+    <header>💎 Branvee Tips</header>
+
+    <div class="container">
+      <h2>Exclusive Daily Free Tips</h2>
+
+      <div class="tip">
+        <p><strong>1. Real Madrid vs Barcelona</strong><br>
+        💰 Tip: Both Teams to Score (BTTS)<br>
+        💎 Confidence: 90%</p>
+      </div>
+
+      <div class="tip">
+        <p><strong>2. Manchester City vs Arsenal</strong><br>
+        💰 Tip: Over 2.5 Goals<br>
+        💎 Confidence: 88%</p>
+      </div>
+
+      <div class="tip">
+        <p><strong>3. PSG vs Marseille</strong><br>
+        💰 Tip: PSG to Win & Over 1.5<br>
+        💎 Confidence: 85%</p>
+      </div>
+
+      <div class="advice">
+        💡 Tip of the Day: Bet smart, follow stats, and avoid emotional betting.
+      </div>
+
+      <a href="contact.html" class="join-btn">💎 Upgrade to VIP</a>
+    </div>
+  
+    <div class="vip-buttons">
+      <a href="contact.html" class="gold-vip-btn">💎 Join Gold VIP</a>
+      <a href="random-vip.html" class="random-vip-btn">🎯 Join Random VIP</a>
+    </div>
+
+    <footer>
+      <a href="index.html">🏠 Home</a> |
+      <a href="vip.html">💎 VIP Room</a> |
+      <a href="contact.html">📞 Contact</a> |
+      <a href="about.html">ℹ️ About</a>
+      <p>© 2025 Branvee Tips. All rights reserved.</p>
+    </footer>
+  </div>
+
+<script>
+  // Wait for 5 seconds, fade out, then show the main content
+  setTimeout(() => {
+    document.getElementById('splash').classList.add('fade-out');
+    setTimeout(() => {
+      document.getElementById('splash').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+    }, 1000);
+  }, 5000);
+</script>
+
+</body>
+</html>
