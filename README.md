@@ -1,2 +1,0 @@
-# Branveetips
-Gives best tips.
